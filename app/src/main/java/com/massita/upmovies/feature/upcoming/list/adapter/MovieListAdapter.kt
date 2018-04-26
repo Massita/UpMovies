@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
+import com.massita.upmovies.extension.load
 import kotlinx.android.synthetic.main.item_list_movie.view.*
 
 class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (Int) -> Unit) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
@@ -32,6 +33,7 @@ class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (In
         fun bind(movie: Movie, pos: Int, listener: (Int) -> Unit) = with(itemView) {
             textMovieTitle.text = movie.title
             textMovieReleaseDate.text = movie.releaseDate
+            coverImage.load("http://image.tmdb.org/t/p/w780" + movie.backdropPath)
 
             itemView.setOnClickListener { listener(pos) }
         }
