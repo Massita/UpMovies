@@ -2,12 +2,17 @@ package com.massita.upmovies.feature.upcoming.list
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import com.massita.upmovies.R
+import kotlinx.android.synthetic.main.fragment_movie_list.*
 
 class MovieListFragment : Fragment(), MovieListFragmentContract.View {
+
+    private lateinit var presenter: MovieListFragmentContract.Presenter
 
     companion object {
 
@@ -20,5 +25,23 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
         return inflater.inflate(R.layout.fragment_movie_list, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        presenter = MovieListFragmentPresenter(this)
+        presenter.start()
+    }
+
+    override fun setupRecyclerView() {
+        recyclerViewMovieList.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+    }
+
+    override fun showLoading() {
+
+    }
+
+    override fun hideLoading() {
+
+    }
 
 }

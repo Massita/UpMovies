@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UpMovies</string>
+
+    <!-- Movie List texts -->
+    <string name="upcoming_premiere">Upcoming premieres</string>
+
 </resources>
