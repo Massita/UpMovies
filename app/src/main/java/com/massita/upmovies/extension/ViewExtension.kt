@@ -7,14 +7,14 @@ import android.support.v7.graphics.Palette
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestListener
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 
-fun ImageView.load(imagePath: String, listener: RequestListener<Drawable>) {
-    Glide.with(this)
+fun ImageView.load(imagePath: String, callback: Callback) {
+    Picasso.get()
             .load(imagePath)
-            .listener(listener)
-            .into(this)
+            .noPlaceholder()
+            .into(this, callback)
 }
 
 fun View.setPaletteColor(image: Bitmap) {

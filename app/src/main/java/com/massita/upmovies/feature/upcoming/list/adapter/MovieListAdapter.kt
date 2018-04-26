@@ -6,15 +6,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
+import com.squareup.picasso.Callback
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.extension.load
 import com.massita.upmovies.extension.setPaletteColor
 import kotlinx.android.synthetic.main.item_list_movie.view.*
+import java.lang.Exception
 
 class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (Int) -> Unit) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
@@ -36,8 +34,7 @@ class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (In
     }
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), RequestListener<Drawable> {
-
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), Callback {
         fun bind(movie: Movie, pos: Int, listener: (Int) -> Unit) = with(itemView) {
             textMovieTitle.text = movie.title
             textMovieReleaseDate.text = movie.releaseDate
@@ -47,13 +44,12 @@ class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (In
             itemView.setOnClickListener { listener(pos) }
         }
 
-        override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
-            return false
+        override fun onSuccess() {
+            itemView.movieHolder.setPaletteColor((itemView.coverImage.drawable as BitmapDrawable).bitmap)
         }
 
-        override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-            itemView.movieHolder.setPaletteColor((resource as BitmapDrawable).bitmap)
-            return false
+        override fun onError(e: Exception?) {
+
         }
 
     }
