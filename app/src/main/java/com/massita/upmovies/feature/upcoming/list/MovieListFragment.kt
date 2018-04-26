@@ -30,6 +30,8 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
 
         presenter = MovieListFragmentPresenter(this)
         presenter.start()
+
+        presenter.nextPage()
     }
 
     override fun setupRecyclerView() {

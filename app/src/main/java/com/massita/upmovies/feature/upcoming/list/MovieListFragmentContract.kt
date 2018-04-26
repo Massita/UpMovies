@@ -15,5 +15,7 @@ interface MovieListFragmentContract {
 
         fun start()
 
+        fun nextPage()
+
     }
 }
