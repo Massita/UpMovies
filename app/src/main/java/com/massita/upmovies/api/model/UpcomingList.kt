@@ -9,8 +9,3 @@ data class UpcomingList(
         @SerializedName("total_pages") val totalPages: Int,
         @SerializedName("total_results") val totalResults: Int
 )
-
-data class DateRange(
-        @SerializedName("maximum") val maximum: String,
-        @SerializedName("minimum") val minimum: String
-)
