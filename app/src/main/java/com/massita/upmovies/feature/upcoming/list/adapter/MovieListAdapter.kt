@@ -8,7 +8,7 @@ import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
 import kotlinx.android.synthetic.main.item_list_movie.view.*
 
-class MovieListAdapter(private val movies: List<Movie>, val listener: (Int) -> Unit) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
+class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (Int) -> Unit) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_movie, parent, false)
@@ -21,6 +21,10 @@ class MovieListAdapter(private val movies: List<Movie>, val listener: (Int) -> U
         val movie = movies[position]
 
         holder.bind(movie, position, listener)
+    }
+
+    fun addAll(list : Collection<Movie>) {
+        movies.addAll(list)
     }
 
 

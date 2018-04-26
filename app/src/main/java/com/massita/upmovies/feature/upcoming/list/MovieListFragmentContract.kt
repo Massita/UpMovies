@@ -1,5 +1,7 @@
 package com.massita.upmovies.feature.upcoming.list
 
+import com.massita.upmovies.feature.upcoming.list.adapter.MovieListAdapter
+
 interface MovieListFragmentContract {
     interface View {
 
@@ -8,6 +10,8 @@ interface MovieListFragmentContract {
         fun hideLoading()
 
         fun setupRecyclerView()
+
+        fun setAdapter(adapter: MovieListAdapter)
 
     }
 

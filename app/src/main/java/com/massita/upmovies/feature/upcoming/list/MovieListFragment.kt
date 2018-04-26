@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.massita.upmovies.R
+import com.massita.upmovies.feature.upcoming.list.adapter.MovieListAdapter
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 
 class MovieListFragment : Fragment(), MovieListFragmentContract.View {
@@ -36,6 +37,10 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
 
     override fun setupRecyclerView() {
         recyclerViewMovieList.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+    }
+
+    override fun setAdapter(adapter: MovieListAdapter) {
+        recyclerViewMovieList.adapter = adapter
     }
 
     override fun showLoading() {
