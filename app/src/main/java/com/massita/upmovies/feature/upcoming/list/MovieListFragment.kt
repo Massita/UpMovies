@@ -54,4 +54,18 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
         progressBar.hide()
     }
 
+    override fun showEmptyPlaceholder() {
+        imageError.setImageResource(R.drawable.ic_theaters_black_120dp)
+        group.visibility = View.VISIBLE
+    }
+
+    override fun showErrorMessagePlaceholder() {
+        imageError.setImageResource(R.drawable.ic_sentiment_very_dissatisfied_black_120dp)
+        group.visibility = View.VISIBLE
+    }
+
+    override fun hidePlaceholder() {
+        group.visibility = View.GONE
+    }
+
 }

@@ -33,9 +33,10 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
                 .getUpcoming(ServiceConfig.API_KEY, Locale.getDefault().getDefaultIsoString(), currentPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(this::onNext)
-                .doOnComplete { view?.hideLoading() }
-                .subscribe()
+                .subscribe(
+                        { onNext(it) } ,
+                        { onRequestError(it) }
+                )
 
         compositeDisposable.add(disposable)
     }
@@ -50,6 +51,20 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
         currentPage++
         adapter.addAll(list!!.results)
         adapter.notifyDataSetChanged()
+
+        if(adapter.itemCount == 0) {
+            view?.showEmptyPlaceholder()
+        }
+
+        view?.hideLoading()
+    }
+
+    private fun onRequestError(error: Throwable) {
+        view?.hideLoading()
+
+        if(adapter.itemCount == 0) {
+            view?.showErrorMessagePlaceholder()
+        }
     }
 
     private fun onMovieSelected(position: Int) {

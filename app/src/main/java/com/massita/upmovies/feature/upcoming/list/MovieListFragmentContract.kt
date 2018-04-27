@@ -13,6 +13,12 @@ interface MovieListFragmentContract {
 
         fun setAdapter(adapter: MovieListAdapter)
 
+        fun showErrorMessagePlaceholder()
+
+        fun showEmptyPlaceholder()
+
+        fun hidePlaceholder()
+
     }
 
     interface Presenter {
