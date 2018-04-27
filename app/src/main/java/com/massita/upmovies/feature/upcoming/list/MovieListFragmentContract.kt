@@ -11,6 +11,10 @@ interface MovieListFragmentContract {
 
         fun setupRecyclerView()
 
+        fun setupSwipeToRefresh()
+
+        fun hideRefresh()
+
         fun setAdapter(adapter: MovieListAdapter)
 
         fun showErrorMessagePlaceholder()
@@ -27,5 +31,6 @@ interface MovieListFragmentContract {
 
         fun nextPage()
 
+        fun refreshSearch()
     }
 }

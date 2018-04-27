@@ -1,7 +1,6 @@
 package com.massita.upmovies.feature.upcoming.list
 
 import com.massita.upmovies.api.ApiClient
-import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.api.model.UpcomingList
 import com.massita.upmovies.api.service.MovieService
 import com.massita.upmovies.api.service.ServiceConfig
@@ -23,7 +22,21 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
 
     override fun start() {
         view?.setupRecyclerView()
+        view?.setupSwipeToRefresh()
         view?.setAdapter(adapter)
+    }
+
+    override fun refreshSearch() {
+        val disposable = movieService
+                .getUpcoming(ServiceConfig.API_KEY, Locale.getDefault().getDefaultIsoString(), 1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        { onRefreshSuccess(it) } ,
+                        { onRequestError(it) }
+                )
+
+        compositeDisposable.add(disposable)
     }
 
     override fun nextPage() {
@@ -34,14 +47,14 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { onNext(it) } ,
+                        { onNextPageSuccess(it) } ,
                         { onRequestError(it) }
                 )
 
         compositeDisposable.add(disposable)
     }
 
-    private fun onNext(response: Response<UpcomingList>) {
+    private fun onNextPageSuccess(response: Response<UpcomingList>) {
         when (response.code()) {
             HttpURLConnection.HTTP_OK -> onRequestOk(response.body())
         }
@@ -61,10 +74,31 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
 
     private fun onRequestError(error: Throwable) {
         view?.hideLoading()
+        view?.hideRefresh()
 
         if(adapter.itemCount == 0) {
             view?.showErrorMessagePlaceholder()
         }
+    }
+
+    private fun onRefreshSuccess(response: Response<UpcomingList>) {
+        when (response.code()) {
+            HttpURLConnection.HTTP_OK -> onRefresh(response.body())
+        }
+    }
+
+    private fun onRefresh(list: UpcomingList?) {
+        currentPage = 1
+        view?.hidePlaceholder()
+        adapter.removeAll()
+        adapter.addAll(list!!.results)
+        adapter.notifyDataSetChanged()
+
+        if(adapter.itemCount == 0) {
+            view?.showEmptyPlaceholder()
+        }
+
+        view?.hideRefresh()
     }
 
     private fun onMovieSelected(position: Int) {

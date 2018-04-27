@@ -33,6 +33,9 @@ class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (In
         movies.addAll(list)
     }
 
+    fun removeAll() {
+        movies.clear()
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), Callback {
         fun bind(movie: Movie, pos: Int, listener: (Int) -> Unit) = with(itemView) {

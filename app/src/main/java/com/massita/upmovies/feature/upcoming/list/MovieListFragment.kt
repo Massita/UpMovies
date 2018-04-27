@@ -42,6 +42,14 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
         recyclerViewMovieList.addOnScrollListener(InfiniteScrollListener( { presenter.nextPage() } , linearLayout))
     }
 
+    override fun setupSwipeToRefresh() {
+        swipeToRefresh.setOnRefreshListener { presenter.refreshSearch() }
+    }
+
+    override fun hideRefresh() {
+        swipeToRefresh.isRefreshing = false
+    }
+
     override fun setAdapter(adapter: MovieListAdapter) {
         recyclerViewMovieList.adapter = adapter
     }
