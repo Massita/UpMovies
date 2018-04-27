@@ -47,11 +47,11 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
     }
 
     override fun showLoading() {
-
+        progressBar.show()
     }
 
     override fun hideLoading() {
-
+        progressBar.hide()
     }
 
 }
