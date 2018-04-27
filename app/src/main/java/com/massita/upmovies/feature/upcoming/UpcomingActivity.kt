@@ -9,6 +9,7 @@ import com.massita.upmovies.feature.upcoming.list.MovieListFragment
 
 class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {
     private lateinit var presenter: UpcomingActivityContract.Presenter
+    private var currentTag = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +29,18 @@ class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {
     }
 
     fun showFragment(fragment: Fragment, tag: String) {
+        currentTag = tag
         val transaction = supportFragmentManager.beginTransaction()
 
         transaction.addToBackStack(tag)
         transaction.replace(R.id.fragment_container, fragment, tag)
         transaction.commit()
+    }
+
+    override fun onBackPressed() {
+        when(currentTag) {
+            UpcomingActivityPresenter.Tag.MOVIE_LIST_FRAGMENT -> finish()
+            else -> super.onBackPressed()
+        }
     }
 }
