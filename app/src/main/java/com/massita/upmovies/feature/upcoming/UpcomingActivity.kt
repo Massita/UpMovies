@@ -15,6 +15,7 @@ class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upcoming)
 
+        supportActionBar?.setTitle(R.string.upcoming_premiere)
         presenter = UpcomingActivityPresenter(this)
         presenter.start()
     }
