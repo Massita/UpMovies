@@ -56,11 +56,13 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
 
     override fun showEmptyPlaceholder() {
         imageError.setImageResource(R.drawable.ic_theaters_black_120dp)
+        textError.setText(R.string.upcoming_fetch_empty)
         group.visibility = View.VISIBLE
     }
 
     override fun showErrorMessagePlaceholder() {
         imageError.setImageResource(R.drawable.ic_sentiment_very_dissatisfied_black_120dp)
+        textError.setText(R.string.upcoming_fetch_error)
         group.visibility = View.VISIBLE
     }
 

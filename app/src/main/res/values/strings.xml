@@ -3,5 +3,7 @@
 
     <!-- Movie List texts -->
     <string name="upcoming_premiere">Upcoming premieres</string>
+    <string name="upcoming_fetch_error">Failed to get movies data</string>
+    <string name="upcoming_fetch_empty">No upcoming premiere found</string>
 
 </resources>
