@@ -4,6 +4,7 @@ import com.massita.upmovies.api.ApiClient
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.api.model.UpcomingList
 import com.massita.upmovies.api.service.MovieService
+import com.massita.upmovies.api.service.ServiceConfig
 import com.massita.upmovies.feature.upcoming.list.adapter.MovieListAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -27,7 +28,7 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
         view?.showLoading()
 
         val disposable = movieService
-                .getUpcoming("***REMOVED***", "pt-BR", currentPage)
+                .getUpcoming(ServiceConfig.API_KEY, "pt-BR", currentPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(this::onNext)

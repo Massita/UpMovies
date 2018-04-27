@@ -1,16 +1,16 @@
 package com.massita.upmovies.feature.upcoming.list.adapter
 
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.squareup.picasso.Callback
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
+import com.massita.upmovies.api.service.ServiceConfig
 import com.massita.upmovies.extension.load
 import com.massita.upmovies.extension.setPaletteColor
+import com.squareup.picasso.Callback
 import kotlinx.android.synthetic.main.item_list_movie.view.*
 import java.lang.Exception
 
@@ -38,8 +38,7 @@ class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (In
         fun bind(movie: Movie, pos: Int, listener: (Int) -> Unit) = with(itemView) {
             textMovieTitle.text = movie.title
             textMovieReleaseDate.text = movie.releaseDate
-            coverImage.load("http://image.tmdb.org/t/p/w780" + movie.backdropPath, this@ViewHolder)
-
+            coverImage.load(ServiceConfig.IMAGE_BASE_URL + movie.backdropPath, this@ViewHolder)
 
             itemView.setOnClickListener { listener(pos) }
         }
