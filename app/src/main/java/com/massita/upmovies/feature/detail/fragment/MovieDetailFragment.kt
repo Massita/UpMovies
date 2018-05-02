@@ -62,4 +62,8 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
     override fun setMovieGenres(genres: String) {
         textMovieGenres.text = genres
     }
+
+    override fun showTrailerButton() {
+        buttonTrailer.visibility = View.VISIBLE
+    }
 }

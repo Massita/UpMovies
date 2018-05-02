@@ -14,6 +14,8 @@ interface MovieDetailFragmentContract {
 
         fun setMovieGenres(genres: String)
 
+        fun showTrailerButton()
+
     }
 
     interface Presenter {
