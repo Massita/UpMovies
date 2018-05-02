@@ -2,9 +2,13 @@ package com.massita.upmovies.feature.detail
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.graphics.Palette
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.api.service.ServiceConfig
@@ -42,12 +46,26 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
 
         movie = intent.getParcelableExtra(TAG_MOVIE)
 
-        coverImage.load(ServiceConfig.IMAGE_BASE_URL + movie?.backdropPath, {})
-        collapsingToolbar.title = movie?.title
-
         presenter = MovieDetailActivityPresenter(this)
 
+        coverImage.load(ServiceConfig.IMAGE_BASE_URL + movie?.backdropPath, presenter.applyPalette())
+
         presenter.start()
+    }
+
+    override fun setupCollapsingToolbar() {
+        collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
+    }
+
+    override fun setupCollapsingToolbarColors() {
+        val bitmap = (coverImage.drawable as BitmapDrawable).bitmap
+        Palette.from(bitmap).generate { palette ->
+            val primary = ContextCompat.getColor(this, R.color.colorPrimary)
+            val primaryDark = ContextCompat.getColor(this, R.color.colorPrimaryDark)
+
+            collapsingToolbar.setContentScrimColor(palette.getVibrantColor(primary));
+            collapsingToolbar.setStatusBarScrimColor(palette.getDarkVibrantColor(primaryDark));
+        }
     }
 
     override fun showDetailFragment() {

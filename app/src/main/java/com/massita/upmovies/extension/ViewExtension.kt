@@ -30,7 +30,7 @@ fun ImageView.load(imagePath: String?, func: () -> Unit) {
 
 fun View.setPaletteColor(image: Bitmap) {
     Palette.from(image).generate { palette ->
-        val bgColor = palette.getDarkMutedColor(ContextCompat.getColor(context, android.R.color.black))
+        val bgColor = palette.getDarkVibrantColor(ContextCompat.getColor(context, android.R.color.black))
         setBackgroundColor(bgColor)
     }
 }

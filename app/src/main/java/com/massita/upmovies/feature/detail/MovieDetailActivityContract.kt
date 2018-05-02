@@ -6,12 +6,17 @@ interface MovieDetailActivityContract {
 
         fun showDetailFragment()
 
+        fun setupCollapsingToolbar()
+
+        fun setupCollapsingToolbarColors()
+
     }
 
     interface Presenter {
 
         fun start()
 
+        fun applyPalette() : () -> Unit
     }
 
 }
