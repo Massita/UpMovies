@@ -47,8 +47,8 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
         textMovieTitle.text = title
     }
 
-    override fun setMovieOriginalTitle(originalTitle: String?) {
-        textMovieOriginalTitle.text = originalTitle
+    override fun setMovieOriginalTitle(originalTitle: String?, year: String?) {
+        textMovieOriginalTitle.text = getString(R.string.movie_details_original_name, originalTitle, year)
     }
 
     override fun setMovieOverview(overview: String?) {
@@ -57,5 +57,9 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
 
     override fun setMovieCover(path: String?) {
         posterImage.load(path, presenter.onPosterLoaded())
+    }
+
+    override fun setMovieGenres(genres: String) {
+        textMovieGenres.text = genres
     }
 }

@@ -1,5 +1,6 @@
 package com.massita.upmovies.feature.detail.fragment
 
+import android.text.TextUtils
 import com.massita.upmovies.api.ApiClient
 import com.massita.upmovies.api.model.MovieDetail
 import com.massita.upmovies.api.service.MovieService
@@ -10,6 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 import java.net.HttpURLConnection
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
@@ -48,13 +50,26 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
     private fun onMovieDetailOk(detail: MovieDetail?) {
         movieDetail = detail
 
-        view?.setMovieOriginalTitle(movieDetail?.originalTitle)
+        val releaseYear = SimpleDateFormat("yyyy", Locale.getDefault()).format(movieDetail?.releaseDate)
+
+        view?.setMovieOriginalTitle(movieDetail?.originalTitle, releaseYear)
         view?.setMovieOverview(movieDetail?.overview)
         view?.setMovieTitle(movieDetail?.title)
         view?.setMovieCover(ServiceConfig.IMAGE_BASE_URL + movieDetail?.posterPath)
+        view?.setMovieGenres(getGenresAsString())
+    }
+
+    private fun getGenresAsString() : String {
+        movieDetail?.let {
+            val genres = TextUtils.join(" | ", it.genres)
+
+            return genres.toString()
+        }
+
+        return ""
     }
 
     private fun onRequestError(error: Throwable) {
-
+        // TODO
     }
 }
