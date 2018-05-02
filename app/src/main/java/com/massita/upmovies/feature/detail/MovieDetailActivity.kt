@@ -11,10 +11,13 @@ import com.massita.upmovies.api.service.ServiceConfig
 import com.massita.upmovies.extension.load
 import com.massita.upmovies.feature.detail.fragment.MovieDetailFragment
 import kotlinx.android.synthetic.main.activity_movie_detail.*
-import java.lang.Exception
 
 class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.View {
     private var movie: Movie? = null
+
+    object Tag {
+        const val MOVIE_DETAIL = "MOVIE_DETAIL"
+    }
 
     companion object {
 
@@ -35,7 +38,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
         setContentView(R.layout.activity_movie_detail)
 
         setSupportActionBar(toolbar);
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
         movie = intent.getParcelableExtra(TAG_MOVIE)
 
@@ -48,8 +51,8 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
     }
 
     override fun showDetailFragment() {
-        val fragment = MovieDetailFragment.newInstance()
-        showFragment(fragment, "DETAIL")
+        val fragment = MovieDetailFragment.newInstance(movie?.id ?: 0)
+        showFragment(fragment, Tag.MOVIE_DETAIL)
     }
 
     override fun onBackPressed() {
@@ -57,7 +60,6 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
     }
 
     fun showFragment(fragment: Fragment, tag: String) {
-        //currentTag = tag
         val transaction = supportFragmentManager.beginTransaction()
 
         transaction.addToBackStack(tag)

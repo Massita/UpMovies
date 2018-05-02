@@ -6,13 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.massita.upmovies.R
+import com.massita.upmovies.extension.load
+import kotlinx.android.synthetic.main.activity_movie_detail.*
+import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
 class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
 
     companion object {
+        const val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
 
-        fun newInstance() : MovieDetailFragment {
-            return MovieDetailFragment()
+        fun newInstance(movieId: Int) : MovieDetailFragment {
+            val fragment = MovieDetailFragment()
+            val args = Bundle()
+
+            args.putInt(EXTRA_MOVIE_ID, movieId)
+            fragment.arguments = args
+
+            return fragment
         }
     }
 
@@ -28,5 +38,25 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
         presenter = MovieDetailFragmentPresenter(this)
 
         presenter.start()
+    }
+
+    override fun setMovieTitle(title: String) {
+        textMovieTitle.text = title
+    }
+
+    override fun setMovieTagline(tagline: String) {
+        textMovieTagline.text = tagline
+    }
+
+    override fun setMovieOriginalTitle(originalTitle: String) {
+        textMovieOriginalTitle.text = originalTitle
+    }
+
+    override fun setMovieOverview(overview: String) {
+        textMovieOverview.text = overview
+    }
+
+    override fun setMovieCover(path: String) {
+        posterImage.load(path, presenter.onPosterLoaded())
     }
 }

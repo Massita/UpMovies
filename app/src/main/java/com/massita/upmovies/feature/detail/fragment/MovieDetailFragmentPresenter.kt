@@ -1,8 +1,12 @@
 package com.massita.upmovies.feature.detail.fragment
 
-class MovieDetailFragmentPresenter(view: MovieDetailFragmentContract.View?) : MovieDetailFragmentContract.Presenter {
+class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?) : MovieDetailFragmentContract.Presenter {
 
     override fun start() {
+
+    }
+
+    override fun onPosterLoaded(): () -> Unit = {
 
     }
 }
