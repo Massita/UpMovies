@@ -1,4 +1,4 @@
-package com.massita.upmovies.feature.upcoming.list
+package com.massita.upmovies.feature.upcoming.list.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

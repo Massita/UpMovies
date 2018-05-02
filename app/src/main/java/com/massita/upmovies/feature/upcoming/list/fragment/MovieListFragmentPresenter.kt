@@ -1,4 +1,4 @@
-package com.massita.upmovies.feature.upcoming.list
+package com.massita.upmovies.feature.upcoming.list.fragment
 
 import com.massita.upmovies.api.ApiClient
 import com.massita.upmovies.api.model.UpcomingList

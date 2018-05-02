@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.feature.detail.MovieDetailActivity
-import com.massita.upmovies.feature.upcoming.list.MovieListFragment
+import com.massita.upmovies.feature.upcoming.list.fragment.MovieListFragment
 
 
 class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {

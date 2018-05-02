@@ -3,15 +3,17 @@ package com.massita.upmovies.feature.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.api.service.ServiceConfig
 import com.massita.upmovies.extension.load
+import com.massita.upmovies.feature.detail.fragment.MovieDetailFragment
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import java.lang.Exception
 
-class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.View, com.squareup.picasso.Callback {
+class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.View {
     private var movie: Movie? = null
 
     companion object {
@@ -41,11 +43,25 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
         collapsingToolbar.title = movie?.title
 
         presenter = MovieDetailActivityPresenter(this)
+
+        presenter.start()
     }
 
-    override fun onSuccess() {
+    override fun showDetailFragment() {
+        val fragment = MovieDetailFragment.newInstance()
+        showFragment(fragment, "DETAIL")
     }
 
-    override fun onError(e: Exception?) {
+    override fun onBackPressed() {
+        finish()
+    }
+
+    fun showFragment(fragment: Fragment, tag: String) {
+        //currentTag = tag
+        val transaction = supportFragmentManager.beginTransaction()
+
+        transaction.addToBackStack(tag)
+        transaction.replace(R.id.fragment_container, fragment, tag)
+        transaction.commit()
     }
 }

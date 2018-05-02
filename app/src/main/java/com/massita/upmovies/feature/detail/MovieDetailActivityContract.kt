@@ -4,6 +4,8 @@ interface MovieDetailActivityContract {
 
     interface View {
 
+        fun showDetailFragment()
+
     }
 
     interface Presenter {
