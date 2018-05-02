@@ -1,6 +1,7 @@
 package com.massita.upmovies.api.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class MovieDetail(
         @SerializedName("genres") val genres: List<Genre>,
@@ -10,7 +11,7 @@ data class MovieDetail(
         @SerializedName("original_language") val originalLanguage: String,
         @SerializedName("overview") val overview: String,
         @SerializedName("poster_path") val posterPath: String,
-        @SerializedName("release_date") val releaseDate: String,
+        @SerializedName("release_date") val releaseDate: Date,
         @SerializedName("title") val title: String,
         @SerializedName("video") val video: Boolean,
         @SerializedName("tagline") val tagline: String
