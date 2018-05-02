@@ -19,9 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/posterImage"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/posterImage"
         app:layout_constraintTop_toTopOf="@+id/posterImage" />
 
@@ -30,9 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tagline"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/posterImage"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/posterImage"
         app:layout_constraintTop_toBottomOf="@+id/textMovieTitle" />
 
@@ -41,9 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/posterImage"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/posterImage"
         app:layout_constraintTop_toBottomOf="@+id/textMovieTagline" />
 
