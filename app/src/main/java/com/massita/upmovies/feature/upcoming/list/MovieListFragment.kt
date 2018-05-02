@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.massita.upmovies.R
+import com.massita.upmovies.api.model.Movie
+import com.massita.upmovies.feature.upcoming.UpcomingActivity
 import com.massita.upmovies.feature.upcoming.list.adapter.MovieListAdapter
 import com.massita.upmovies.feature.upcoming.list.listener.InfiniteScrollListener
 import kotlinx.android.synthetic.main.fragment_movie_list.*
@@ -76,6 +78,15 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
 
     override fun hidePlaceholder() {
         group.visibility = View.GONE
+    }
+
+    override fun onMovieSelected(movie: Movie) {
+        getUpcomingActivity()?.onMovieSelected(movie)
+    }
+
+    fun getUpcomingActivity() : UpcomingActivity? {
+        if(activity is UpcomingActivity) return activity as UpcomingActivity
+        return null
     }
 
 }

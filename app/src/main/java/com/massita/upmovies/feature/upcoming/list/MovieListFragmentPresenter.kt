@@ -102,6 +102,6 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
     }
 
     private fun onMovieSelected(position: Int) {
-
+        view?.onMovieSelected(adapter.getItem(position))
     }
 }

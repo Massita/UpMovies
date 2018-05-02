@@ -29,6 +29,10 @@ class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (In
         holder.bind(movie, position, listener)
     }
 
+    fun getItem(position: Int) : Movie {
+        return movies[position]
+    }
+
     fun addAll(list : Collection<Movie>) {
         movies.addAll(list)
     }

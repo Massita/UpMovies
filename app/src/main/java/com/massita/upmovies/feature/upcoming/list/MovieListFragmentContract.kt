@@ -1,5 +1,6 @@
 package com.massita.upmovies.feature.upcoming.list
 
+import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.feature.upcoming.list.adapter.MovieListAdapter
 
 interface MovieListFragmentContract {
@@ -22,6 +23,8 @@ interface MovieListFragmentContract {
         fun showEmptyPlaceholder()
 
         fun hidePlaceholder()
+
+        fun onMovieSelected(movie: Movie)
 
     }
 
