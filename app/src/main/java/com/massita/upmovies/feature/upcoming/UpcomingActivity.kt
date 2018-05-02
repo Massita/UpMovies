@@ -28,7 +28,7 @@ class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {
     }
 
     override fun showMovieDetailActivity(movie: Movie) {
-        startActivity(MovieDetailActivity.newIntent(this))
+        startActivity(MovieDetailActivity.newIntent(this, movie))
     }
 
     fun showFragment(fragment: Fragment, tag: String) {

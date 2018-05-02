@@ -1,7 +1,10 @@
 package com.massita.upmovies.api.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Movie(
         @SerializedName("poster_path") val posterPath: String?,
         @SerializedName("adult") val adult: Boolean,
@@ -17,4 +20,4 @@ data class Movie(
         @SerializedName("vote_count") val voteCount: Int,
         @SerializedName("video") val video: Boolean,
         @SerializedName("vote_average") val voteAverage: Float
-)
+) : Parcelable
