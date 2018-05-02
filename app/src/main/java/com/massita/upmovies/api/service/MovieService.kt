@@ -1,5 +1,6 @@
 package com.massita.upmovies.api.service
 
+import com.massita.upmovies.api.model.MovieDetail
 import com.massita.upmovies.api.model.UpcomingList
 import io.reactivex.Observable
 import retrofit2.Response
@@ -19,6 +20,5 @@ interface MovieService {
     fun getDetails(
             @Path("movieId") movieId: Int,
             @Query("api_key") apiKey: String,
-            @Query("language") language: String
-    )
+            @Query("language") language: String) : Observable<Response<MovieDetail>>
 }

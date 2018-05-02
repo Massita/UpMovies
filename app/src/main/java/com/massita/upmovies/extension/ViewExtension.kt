@@ -10,7 +10,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
-fun ImageView.load(imagePath: String, func: () -> Unit) {
+fun ImageView.load(imagePath: String?, func: () -> Unit) {
     Picasso.get()
             .load(imagePath)
             .placeholder(R.drawable.upcoming_movies_placeholder)

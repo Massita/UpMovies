@@ -4,15 +4,15 @@ interface MovieDetailFragmentContract {
 
     interface View {
 
-        fun setMovieTitle(title: String)
+        fun setMovieTitle(title: String?)
 
-        fun setMovieTagline(tagline: String)
+        fun setMovieTagline(tagline: String?)
 
-        fun setMovieOriginalTitle(originalTitle: String)
+        fun setMovieOriginalTitle(originalTitle: String?)
 
-        fun setMovieOverview(overview: String)
+        fun setMovieOverview(overview: String?)
 
-        fun setMovieCover(path: String)
+        fun setMovieCover(path: String?)
 
     }
 
@@ -21,6 +21,8 @@ interface MovieDetailFragmentContract {
         fun start()
 
         fun onPosterLoaded() : () -> Unit
+
+        fun loadDetails()
 
     }
 
