@@ -47,10 +47,6 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
         textMovieTitle.text = title
     }
 
-    override fun setMovieTagline(tagline: String?) {
-        textMovieTagline.text = tagline
-    }
-
     override fun setMovieOriginalTitle(originalTitle: String?) {
         textMovieOriginalTitle.text = originalTitle
     }

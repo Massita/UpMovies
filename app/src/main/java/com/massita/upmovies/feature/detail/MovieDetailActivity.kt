@@ -61,10 +61,8 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
         val bitmap = (coverImage.drawable as BitmapDrawable).bitmap
         Palette.from(bitmap).generate { palette ->
             val primary = ContextCompat.getColor(this, R.color.colorPrimary)
-            val primaryDark = ContextCompat.getColor(this, R.color.colorPrimaryDark)
 
             collapsingToolbar.setContentScrimColor(palette.getVibrantColor(primary));
-            collapsingToolbar.setStatusBarScrimColor(palette.getDarkVibrantColor(primaryDark));
         }
     }
 

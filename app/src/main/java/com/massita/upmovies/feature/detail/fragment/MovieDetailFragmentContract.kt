@@ -6,8 +6,6 @@ interface MovieDetailFragmentContract {
 
         fun setMovieTitle(title: String?)
 
-        fun setMovieTagline(tagline: String?)
-
         fun setMovieOriginalTitle(originalTitle: String?)
 
         fun setMovieOverview(overview: String?)

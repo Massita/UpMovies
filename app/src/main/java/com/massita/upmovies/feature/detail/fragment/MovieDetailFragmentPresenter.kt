@@ -50,7 +50,6 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
 
         view?.setMovieOriginalTitle(movieDetail?.originalTitle)
         view?.setMovieOverview(movieDetail?.overview)
-        view?.setMovieTagline(movieDetail?.tagline)
         view?.setMovieTitle(movieDetail?.title)
         view?.setMovieCover(ServiceConfig.IMAGE_BASE_URL + movieDetail?.posterPath)
     }

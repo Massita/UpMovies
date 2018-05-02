@@ -21,23 +21,12 @@
         android:id="@+id/textMovieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         app:layout_constraintLeft_toRightOf="@+id/posterImage"
         app:layout_constraintStart_toEndOf="@+id/posterImage"
         app:layout_constraintTop_toTopOf="@+id/posterImage" />
-
-    <TextView
-        android:id="@+id/textMovieTagline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tagline"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintLeft_toRightOf="@+id/posterImage"
-        app:layout_constraintStart_toEndOf="@+id/posterImage"
-        app:layout_constraintTop_toBottomOf="@+id/textMovieTitle" />
 
     <TextView
         android:id="@+id/textMovieOriginalTitle"
@@ -48,7 +37,7 @@
         android:layout_marginStart="20dp"
         app:layout_constraintLeft_toRightOf="@+id/posterImage"
         app:layout_constraintStart_toEndOf="@+id/posterImage"
-        app:layout_constraintTop_toBottomOf="@+id/textMovieTagline" />
+        app:layout_constraintTop_toBottomOf="@+id/textMovieTitle" />
 
     <android.support.constraint.Barrier
         android:id="@+id/barrier"
