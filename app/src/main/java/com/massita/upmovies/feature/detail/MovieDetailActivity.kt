@@ -37,7 +37,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
 
         movie = intent.getParcelableExtra(TAG_MOVIE)
 
-        coverImage.load(ServiceConfig.IMAGE_BASE_URL + movie?.backdropPath, this)
+        coverImage.load(ServiceConfig.IMAGE_BASE_URL + movie?.backdropPath, {})
         collapsingToolbar.title = movie?.title
 
         presenter = MovieDetailActivityPresenter(this)

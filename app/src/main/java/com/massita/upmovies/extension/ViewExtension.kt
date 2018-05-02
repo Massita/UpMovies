@@ -8,12 +8,24 @@ import android.widget.ImageView
 import com.massita.upmovies.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import java.lang.Exception
 
-fun ImageView.load(imagePath: String, callback: Callback) {
+fun ImageView.load(imagePath: String, func: () -> Unit) {
     Picasso.get()
             .load(imagePath)
             .placeholder(R.drawable.upcoming_movies_placeholder)
-            .into(this, callback)
+            .into(
+                    this,
+                    object : Callback {
+                        override fun onSuccess() {
+                            func()
+                        }
+
+                        override fun onError(e: Exception?) {
+
+                        }
+                    }
+            )
 }
 
 fun View.setPaletteColor(image: Bitmap) {

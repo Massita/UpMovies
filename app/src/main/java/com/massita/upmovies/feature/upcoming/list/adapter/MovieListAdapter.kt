@@ -41,21 +41,17 @@ class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (In
         movies.clear()
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), Callback {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(movie: Movie, pos: Int, listener: (Int) -> Unit) = with(itemView) {
             textMovieTitle.text = movie.title
             textMovieReleaseDate.text = movie.releaseDate
-            coverImage.load(ServiceConfig.IMAGE_BASE_URL + movie.backdropPath, this@ViewHolder)
+            coverImage.load(ServiceConfig.IMAGE_BASE_URL + movie.backdropPath, onLoadImage())
 
             itemView.setOnClickListener { listener(pos) }
         }
 
-        override fun onSuccess() {
+        fun onLoadImage() : () -> Unit = {
             itemView.movieHolder.setPaletteColor((itemView.coverImage.drawable as BitmapDrawable).bitmap)
-        }
-
-        override fun onError(e: Exception?) {
-
         }
 
     }
