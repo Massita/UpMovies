@@ -8,7 +8,7 @@ interface UpcomingActivityContract {
 
         fun showMovieListFragment()
 
-        fun showMovieDetailFragment(movie: Movie)
+        fun showMovieDetailActivity(movie: Movie)
 
         fun onMovieSelected(movie: Movie)
 

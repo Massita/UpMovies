@@ -6,7 +6,6 @@ class UpcomingActivityPresenter(private var view: UpcomingActivityContract.View?
 
     object Tag {
         const val MOVIE_LIST_FRAGMENT = "MOVIE_LIST_FRAGMENT"
-        const val MOVIE_DETAIL_FRAGMENT = "MOVIE_DETAIL_FRAGMENT"
     }
 
     override fun start() {
@@ -14,7 +13,7 @@ class UpcomingActivityPresenter(private var view: UpcomingActivityContract.View?
     }
 
     override fun onMovieSelected(movie: Movie) {
-        view?.showMovieDetailFragment(movie)
+        view?.showMovieDetailActivity(movie)
     }
 
 }
