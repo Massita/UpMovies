@@ -25,6 +25,7 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
 
     override fun start() {
         loadDetails()
+        view?.setupListeners()
     }
 
     override fun onPosterLoaded(): () -> Unit = {
@@ -67,9 +68,7 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
         view?.setMovieCover(ServiceConfig.IMAGE_BASE_URL + movieDetail?.posterPath)
         view?.setMovieGenres(getGenresAsString())
 
-        if(movieDetail?.video == true) {
-            loadTrailerPath()
-        }
+        loadTrailerPath()
     }
 
     private fun onVideoOk(videos: Videos?) {
@@ -116,5 +115,11 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
 
     private fun onRequestError(error: Throwable) {
         // TODO
+    }
+
+    override fun onTrailerClicked() {
+        if(trailerVideo != null) {
+            view?.startTrailer(trailerVideo!!.key)
+        }
     }
 }

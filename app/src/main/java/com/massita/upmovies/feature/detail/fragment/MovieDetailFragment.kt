@@ -8,6 +8,11 @@ import android.view.ViewGroup
 import com.massita.upmovies.R
 import com.massita.upmovies.extension.load
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
+import android.support.v4.content.ContextCompat.startActivity
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
+
 
 class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
 
@@ -43,6 +48,10 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
         presenter.loadDetails()
     }
 
+    override fun setupListeners() {
+        buttonTrailer.setOnClickListener { presenter?.onTrailerClicked() }
+    }
+
     override fun setMovieTitle(title: String?) {
         textMovieTitle.text = title
     }
@@ -65,5 +74,17 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
 
     override fun showTrailerButton() {
         buttonTrailer.visibility = View.VISIBLE
+    }
+
+    override fun startTrailer(key: String) {
+        val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:$key"))
+        val webIntent = Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://www.youtube.com/watch?v=$key"))
+        try {
+            context?.startActivity(appIntent)
+        } catch (ex: ActivityNotFoundException) {
+            context?.startActivity(webIntent)
+        }
+
     }
 }

@@ -4,6 +4,8 @@ interface MovieDetailFragmentContract {
 
     interface View {
 
+        fun setupListeners()
+
         fun setMovieTitle(title: String?)
 
         fun setMovieOriginalTitle(originalTitle: String?, year: String?)
@@ -16,6 +18,8 @@ interface MovieDetailFragmentContract {
 
         fun showTrailerButton()
 
+        fun startTrailer(key: String)
+
     }
 
     interface Presenter {
@@ -25,6 +29,8 @@ interface MovieDetailFragmentContract {
         fun onPosterLoaded() : () -> Unit
 
         fun loadDetails()
+
+        fun onTrailerClicked()
 
     }
 
