@@ -21,7 +21,8 @@
                 android:layout_height="wrap_content"
                 app:layout_collapseMode="parallax"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                android:transitionName="@string/transition_movie_image" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

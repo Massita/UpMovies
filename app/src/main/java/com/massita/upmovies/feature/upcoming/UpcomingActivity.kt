@@ -27,10 +27,6 @@ class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {
         showFragment(fragment, UpcomingActivityPresenter.Tag.MOVIE_LIST_FRAGMENT)
     }
 
-    override fun showMovieDetailActivity(movie: Movie) {
-        startActivity(MovieDetailActivity.newIntent(this, movie))
-    }
-
     fun showFragment(fragment: Fragment, tag: String) {
         currentTag = tag
         val transaction = supportFragmentManager.beginTransaction()
@@ -45,9 +41,5 @@ class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {
             UpcomingActivityPresenter.Tag.MOVIE_LIST_FRAGMENT -> finish()
             else -> super.onBackPressed()
         }
-    }
-
-    override fun onMovieSelected(movie: Movie) {
-        presenter.onMovieSelected(movie)
     }
 }

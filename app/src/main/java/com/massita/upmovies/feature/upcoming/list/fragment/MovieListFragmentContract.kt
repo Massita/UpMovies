@@ -1,5 +1,7 @@
 package com.massita.upmovies.feature.upcoming.list.fragment
 
+import android.support.v7.widget.AppCompatImageView
+import android.view.View
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.feature.upcoming.list.adapter.MovieListAdapter
 
@@ -24,7 +26,7 @@ interface MovieListFragmentContract {
 
         fun hidePlaceholder()
 
-        fun onMovieSelected(movie: Movie)
+        fun onMovieSelected(movie: Movie, view: android.view.View)
 
     }
 

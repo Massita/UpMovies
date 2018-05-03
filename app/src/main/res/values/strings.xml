@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">UpMovies</string>
 
+    <!-- Transitions -->
+    <string name="transition_movie_image">transition_movie_image</string>
+
     <!-- Movie List texts -->
     <string name="upcoming_premiere">Upcoming premieres</string>
     <string name="upcoming_fetch_error">Failed to get movies data</string>

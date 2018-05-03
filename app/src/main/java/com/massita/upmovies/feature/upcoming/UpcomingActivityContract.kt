@@ -8,17 +8,11 @@ interface UpcomingActivityContract {
 
         fun showMovieListFragment()
 
-        fun showMovieDetailActivity(movie: Movie)
-
-        fun onMovieSelected(movie: Movie)
-
     }
 
     interface Presenter {
 
         fun start()
-
-        fun onMovieSelected(movie: Movie)
 
     }
 

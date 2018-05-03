@@ -1,5 +1,6 @@
 package com.massita.upmovies.feature.upcoming.list.fragment
 
+import android.view.View
 import com.massita.upmovies.api.ApiClient
 import com.massita.upmovies.api.model.UpcomingList
 import com.massita.upmovies.api.service.MovieService
@@ -18,7 +19,7 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
     private val compositeDisposable : CompositeDisposable = CompositeDisposable()
     private val movieService: MovieService = ApiClient().getMovieService()
     private var currentPage = 1
-    private var adapter: MovieListAdapter = MovieListAdapter(mutableListOf()) { onMovieSelected(it) }
+    private var adapter: MovieListAdapter = MovieListAdapter(mutableListOf()) { p, v -> onMovieSelected(p, v) }
 
     override fun start() {
         view?.setupRecyclerView()
@@ -101,7 +102,7 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
         view?.hideRefresh()
     }
 
-    private fun onMovieSelected(position: Int) {
-        view?.onMovieSelected(adapter.getItem(position))
+    private fun onMovieSelected(position: Int, selectedView: View) {
+        view?.onMovieSelected(adapter.getItem(position), selectedView)
     }
 }

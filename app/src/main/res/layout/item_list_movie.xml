@@ -21,7 +21,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:transitionName="@string/transition_movie_image" />
 
         <LinearLayout
             android:id="@+id/movieHolder"

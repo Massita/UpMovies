@@ -1,7 +1,11 @@
 package com.massita.upmovies.feature.upcoming.list.fragment
 
+import android.app.Activity
+import android.os.Build
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
+import android.support.v4.util.Pair
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
+import com.massita.upmovies.feature.detail.MovieDetailActivity
 import com.massita.upmovies.feature.upcoming.UpcomingActivity
 import com.massita.upmovies.feature.upcoming.list.adapter.MovieListAdapter
 import com.massita.upmovies.feature.upcoming.list.listener.InfiniteScrollListener
@@ -80,13 +85,15 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
         group.visibility = View.GONE
     }
 
-    override fun onMovieSelected(movie: Movie) {
-        getUpcomingActivity()?.onMovieSelected(movie)
-    }
-
-    fun getUpcomingActivity() : UpcomingActivity? {
-        if(activity is UpcomingActivity) return activity as UpcomingActivity
-        return null
+    override fun onMovieSelected(movie: Movie, view: View) {
+        val intent = MovieDetailActivity.newIntent(context!!, movie)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            val p1 = Pair.create(view, getString(R.string.transition_movie_image))
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity as Activity, p1)
+            startActivity(intent, options.toBundle())
+        } else {
+            startActivity(intent)
+        }
     }
 
 }
