@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.graphics.Palette
+import android.view.MenuItem
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.api.service.ServiceConfig
@@ -51,6 +52,16 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
         coverImage.load(ServiceConfig.IMAGE_BASE_URL + movie?.backdropPath, presenter.applyPalette())
 
         presenter.start()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     override fun setupCollapsingToolbar() {
