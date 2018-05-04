@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.massita.upmovies.R
+import com.massita.upmovies.api.ApiClient
 import com.massita.upmovies.extension.load
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
@@ -40,7 +41,7 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
 
         val movieId = arguments?.getInt(EXTRA_MOVIE_ID, 0) ?: 0
 
-        presenter = MovieDetailFragmentPresenter(this, movieId)
+        presenter = MovieDetailFragmentPresenter(this, ApiClient(context!!).getMovieService(), movieId)
 
         presenter.start()
 

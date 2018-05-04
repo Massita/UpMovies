@@ -14,10 +14,10 @@ import retrofit2.Response
 import java.net.HttpURLConnection
 import java.util.*
 
-class MovieListFragmentPresenter(private var view: MovieListFragmentContract.View?) : MovieListFragmentContract.Presenter {
+class MovieListFragmentPresenter(private var view: MovieListFragmentContract.View?,
+                                 private val movieService: MovieService) : MovieListFragmentContract.Presenter {
 
     private val compositeDisposable : CompositeDisposable = CompositeDisposable()
-    private val movieService: MovieService = ApiClient().getMovieService()
     private var currentPage = 1
     private var adapter: MovieListAdapter = MovieListAdapter(mutableListOf()) { p, v -> onMovieSelected(p, v) }
 

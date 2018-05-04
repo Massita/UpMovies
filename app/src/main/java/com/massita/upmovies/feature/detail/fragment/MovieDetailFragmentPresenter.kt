@@ -17,9 +17,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
+                                   val movieService: MovieService,
                                    private var movieId: Int) : MovieDetailFragmentContract.Presenter {
     private val compositeDisposable : CompositeDisposable = CompositeDisposable()
-    private val movieService: MovieService = ApiClient().getMovieService()
     private var movieDetail: MovieDetail? = null
     private var trailerVideo: Video? = null
 
