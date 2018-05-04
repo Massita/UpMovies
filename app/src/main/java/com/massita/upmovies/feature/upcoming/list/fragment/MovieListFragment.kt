@@ -14,7 +14,6 @@ import android.widget.LinearLayout
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.feature.detail.MovieDetailActivity
-import com.massita.upmovies.feature.upcoming.UpcomingActivity
 import com.massita.upmovies.feature.upcoming.list.adapter.MovieListAdapter
 import com.massita.upmovies.feature.upcoming.list.listener.InfiniteScrollListener
 import kotlinx.android.synthetic.main.fragment_movie_list.*

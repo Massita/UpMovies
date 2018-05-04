@@ -1,7 +1,5 @@
 package com.massita.upmovies.feature.upcoming
 
-import com.massita.upmovies.api.model.Movie
-
 class UpcomingActivityPresenter(private var view: UpcomingActivityContract.View?) : UpcomingActivityContract.Presenter {
 
     object Tag {

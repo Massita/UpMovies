@@ -1,7 +1,6 @@
 package com.massita.upmovies.feature.upcoming.list.adapter
 
 import android.graphics.drawable.BitmapDrawable
-import android.support.v4.widget.ImageViewCompat
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,9 +11,7 @@ import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.api.service.ServiceConfig
 import com.massita.upmovies.extension.load
 import com.massita.upmovies.extension.setPaletteColor
-import com.squareup.picasso.Callback
 import kotlinx.android.synthetic.main.item_list_movie.view.*
-import java.lang.Exception
 
 class MovieListAdapter(private val movies: MutableList<Movie>, val listener: (Int, View) -> Unit) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 

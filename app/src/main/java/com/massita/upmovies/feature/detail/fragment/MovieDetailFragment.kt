@@ -1,5 +1,8 @@
 package com.massita.upmovies.feature.detail.fragment
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +11,6 @@ import android.view.ViewGroup
 import com.massita.upmovies.R
 import com.massita.upmovies.extension.load
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import android.support.v4.content.ContextCompat.startActivity
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
 
 
 class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
