@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.massita.upmovies.R
 import com.massita.upmovies.feature.upcoming.list.fragment.MovieListFragment
+import kotlinx.android.synthetic.main.activity_upcoming.*
 
 
 class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {
