@@ -1,7 +1,6 @@
 package com.massita.upmovies.feature.upcoming.list.fragment
 
 import android.view.View
-import com.massita.upmovies.api.ApiClient
 import com.massita.upmovies.api.model.UpcomingList
 import com.massita.upmovies.api.service.MovieService
 import com.massita.upmovies.api.service.ServiceConfig

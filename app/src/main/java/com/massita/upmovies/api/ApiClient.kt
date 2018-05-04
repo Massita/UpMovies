@@ -4,20 +4,14 @@ import android.content.Context
 import com.massita.upmovies.api.service.MovieService
 import com.massita.upmovies.api.service.ServiceConfig
 import okhttp3.Cache
+import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
-import javax.xml.datatype.DatatypeConstants.DAYS
-import okhttp3.CacheControl
 import java.util.concurrent.TimeUnit
-import javax.xml.datatype.DatatypeConstants.SECONDS
-import android.net.NetworkInfo
-
-
-
 
 
 class ApiClient(var context: Context) {

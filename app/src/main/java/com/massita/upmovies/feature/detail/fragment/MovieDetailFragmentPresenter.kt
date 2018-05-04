@@ -1,7 +1,6 @@
 package com.massita.upmovies.feature.detail.fragment
 
 import android.text.TextUtils
-import com.massita.upmovies.api.ApiClient
 import com.massita.upmovies.api.model.MovieDetail
 import com.massita.upmovies.api.model.Video
 import com.massita.upmovies.api.model.Videos

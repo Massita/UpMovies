@@ -49,7 +49,7 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
     }
 
     override fun setupListeners() {
-        buttonTrailer.setOnClickListener { presenter?.onTrailerClicked() }
+        buttonTrailer.setOnClickListener { presenter.onTrailerClicked() }
     }
 
     override fun setMovieTitle(title: String?) {
