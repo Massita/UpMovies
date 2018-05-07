@@ -89,6 +89,10 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
         buttonTrailer.visibility = View.VISIBLE
     }
 
+    override fun hideTrailerButton() {
+        buttonTrailer.visibility = View.GONE
+    }
+
     override fun startTrailer(key: String) {
         val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:$key"))
         val webIntent = Intent(Intent.ACTION_VIEW,

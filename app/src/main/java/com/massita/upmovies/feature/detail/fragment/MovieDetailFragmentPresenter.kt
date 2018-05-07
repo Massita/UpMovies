@@ -89,6 +89,8 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
         if(youtubeVideo != null) {
             view?.showTrailerButton()
             trailerVideo = youtubeVideo
+        } else {
+            view?.hideTrailerButton()
         }
     }
 
@@ -109,7 +111,7 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { onLoadVideos(it) } ,
-                        { }
+                        { view?.hideTrailerButton() }
                 )
 
         compositeDisposable.add(disposable)

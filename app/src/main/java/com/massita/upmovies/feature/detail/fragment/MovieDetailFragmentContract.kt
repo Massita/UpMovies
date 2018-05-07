@@ -22,6 +22,8 @@ interface MovieDetailFragmentContract {
 
         fun showTrailerButton()
 
+        fun hideTrailerButton()
+
         fun startTrailer(key: String)
 
         fun showLoadingAnimation()

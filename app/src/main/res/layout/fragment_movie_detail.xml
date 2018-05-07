@@ -129,6 +129,6 @@
         android:id="@+id/detailsGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="textMovieOverview,textMovieGenres,textMovieTitle,barrier,posterImage,textMovieOriginalTitle,buttonTrailer, movieRating" />
+        app:constraint_referenced_ids="textMovieOverview,textMovieGenres,textMovieTitle,barrier,posterImage,textMovieOriginalTitle,movieRating" />
 
 </android.support.constraint.ConstraintLayout>
