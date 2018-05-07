@@ -61,7 +61,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             android.R.id.home -> {
-                finish()
+                supportFinishAfterTransition()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -87,7 +87,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
     }
 
     override fun onBackPressed() {
-        finish()
+        supportFinishAfterTransition()
     }
 
     fun showFragment(fragment: Fragment, tag: String) {

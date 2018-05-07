@@ -102,6 +102,7 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
     }
 
     override fun showLoadingAnimation() {
+        loadingContainer.visibility = View.VISIBLE
         loadingAnimationView.visibility = View.VISIBLE
         loadingAnimationView.playAnimation()
     }
@@ -109,6 +110,7 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
     override fun hideLoadingAnimation() {
         loadingAnimationView.pauseAnimation()
         loadingAnimationView.visibility = View.GONE
+        loadingContainer.visibility = View.GONE
     }
 
     override fun showDetailGroup() {
