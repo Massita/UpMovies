@@ -61,7 +61,11 @@ class MovieDetailActivityPresenter(var view: MovieDetailActivityContract.View?,
     }
 
     override fun onRememberDateSelected(selected: Int) {
-        view?.scheduleNotification(10000, movie?.title, movie?.releaseDate?.toLocalDateString())
+        val date = movie?.releaseDate?.time
+
+        date?.let {
+            view?.scheduleNotification(it, movie?.title, movie?.releaseDate?.toLocalDateString())
+        }
     }
 
     override fun getMovie(): Movie = movie!!

@@ -134,7 +134,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
                 .show()
     }
 
-    override fun scheduleNotification(dateTimeInMillis: Int, title: String?, date: String?) {
+    override fun scheduleNotification(dateTimeInMillis: Long, title: String?, date: String?) {
         val builder = NotificationHelper(this).getNotification(
                 getString(R.string.notification_movie_release_title),
                 getString(R.string.notification_movie_release_message, title, date))
@@ -150,8 +150,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification)
         val pendingIntent = PendingIntent.getBroadcast(this, 1, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
 
-        val futureInMillis = SystemClock.elapsedRealtime() + dateTimeInMillis
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent)
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, dateTimeInMillis, pendingIntent)
     }
 }

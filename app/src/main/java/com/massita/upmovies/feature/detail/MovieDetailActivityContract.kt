@@ -18,7 +18,7 @@ interface MovieDetailActivityContract {
 
         fun showEmptyRememberDatesMessage()
 
-        fun scheduleNotification(dateTimeInMillis: Int, title: String?, date: String?)
+        fun scheduleNotification(dateTimeInMillis: Long, title: String?, date: String?)
 
     }
 
