@@ -142,7 +142,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
         val notificationIntent = Intent(this, NotificationPublisher::class.java)
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1)
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification)
-        val pendingIntent = PendingIntent.getBroadcast(this, 1, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+        val pendingIntent = PendingIntent.getBroadcast(this, 1, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.set(AlarmManager.RTC_WAKEUP, dateTimeInMillis, pendingIntent)

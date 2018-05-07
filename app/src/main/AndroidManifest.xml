@@ -22,6 +22,6 @@
         <activity android:name=".feature.detail.MovieDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <receiver android:name=".feature.detail.notification.NotificationPublisher" />
+        <receiver android:name=".feature.detail.notification.NotificationPublisher" android:process=":remote" />
     </application>
 </manifest>
