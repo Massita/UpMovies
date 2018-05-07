@@ -89,6 +89,7 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
     private fun onRefreshSuccess(response: Response<UpcomingList>) {
         when (response.code()) {
             HttpURLConnection.HTTP_OK -> onRefresh(response.body())
+            else -> view?.hideRefresh()
         }
     }
 
