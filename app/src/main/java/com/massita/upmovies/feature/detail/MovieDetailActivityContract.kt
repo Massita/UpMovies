@@ -4,11 +4,17 @@ interface MovieDetailActivityContract {
 
     interface View {
 
-        fun showDetailFragment()
+        fun showDetailFragment(movieId: Int)
+
+        fun setCoverImage(path: String)
 
         fun setupCollapsingToolbar()
 
         fun setupCollapsingToolbarColors()
+
+        fun showRememberDialogPicker(options: Array<CharSequence>)
+
+        fun showEmptyRememberDatesMessage()
 
     }
 
@@ -19,6 +25,9 @@ interface MovieDetailActivityContract {
         fun destroy()
 
         fun applyPalette() : () -> Unit
+
+        fun onRememberClick()
+
     }
 
 }

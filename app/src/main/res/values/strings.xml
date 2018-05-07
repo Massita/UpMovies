@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">UpMovies</string>
 
+    <!-- Menu -->
+    <string name="menu_remember">Remember me</string>
+
+    <!-- Dialog -->
+    <string name="dialog_select_remember_date_title">Set alarm</string>
+
     <!-- Transitions -->
     <string name="transition_movie_image">transition_movie_image</string>
 
@@ -11,4 +17,7 @@
 
     <string name="movie_details_trailer">Trailer</string>
     <string name="movie_details_original_name">%1$s (%2$s)</string>
+
+    <!-- Movie details -->
+    <string name="movie_already_released">Movie already released</string>
 </resources>
