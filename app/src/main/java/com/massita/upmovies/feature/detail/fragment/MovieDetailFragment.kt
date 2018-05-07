@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.massita.upmovies.R
 import com.massita.upmovies.api.ApiClient
-import com.massita.upmovies.extension.load
+import com.massita.upmovies.extension.loadWithCustomPlaceholder
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
 
@@ -70,7 +70,7 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
     }
 
     override fun setMovieCover(path: String?) {
-        posterImage.load(path, presenter.onPosterLoaded())
+        posterImage.loadWithCustomPlaceholder(path, R.drawable.poster_placeholder, presenter.onPosterLoaded())
     }
 
     override fun setMovieGenres(genres: String) {
@@ -91,5 +91,24 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
             context?.startActivity(webIntent)
         }
 
+    }
+
+    override fun showLoadingAnimation() {
+        loadingAnimationView.visibility = View.VISIBLE
+        loadingAnimationView.useHardwareAcceleration(true)
+        loadingAnimationView.playAnimation()
+    }
+
+    override fun hideLoadingAnimation() {
+        loadingAnimationView.pauseAnimation()
+        loadingAnimationView.visibility = View.GONE
+    }
+
+    override fun showDetailGroup() {
+        detailsGroup.visibility = View.VISIBLE
+    }
+
+    override fun hideDetailGroup() {
+        detailsGroup.visibility = View.GONE
     }
 }

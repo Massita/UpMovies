@@ -4,29 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loadingAnimationView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_rawRes="@raw/movie_loading_animation"
+        app:lottie_loop="true"
+        android:scaleType="centerInside"
+        app:lottie_enableMergePathsForKitKatAndAbove="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/posterImage"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:adjustViewBounds="true"
-        android:scaleType="centerInside"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/textMovieTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/posterImage"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/posterImage"
         app:layout_constraintTop_toTopOf="@+id/posterImage" />
 
@@ -37,8 +50,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/posterImage"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/posterImage"
         app:layout_constraintTop_toBottomOf="@+id/textMovieTitle" />
 
@@ -49,8 +62,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/posterImage"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/posterImage"
         app:layout_constraintTop_toBottomOf="@+id/textMovieOriginalTitle" />
 
@@ -58,17 +71,16 @@
         android:id="@+id/buttonTrailer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/movie_details_trailer"
-        android:visibility="gone"
-        android:theme="@style/PrimaryButton"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/movie_details_trailer"
+        android:theme="@style/PrimaryButton"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/posterImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <android.support.constraint.Barrier
         android:id="@+id/barrier"
@@ -81,16 +93,22 @@
         android:id="@+id/textMovieOverview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+    <android.support.constraint.Group
+        android:id="@+id/detailsGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="textMovieOverview,textMovieGenres,textMovieTitle,barrier,posterImage,textMovieOriginalTitle,buttonTrailer" />
 
 </android.support.constraint.ConstraintLayout>

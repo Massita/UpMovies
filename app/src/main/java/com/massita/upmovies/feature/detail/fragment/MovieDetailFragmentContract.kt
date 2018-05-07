@@ -20,6 +20,14 @@ interface MovieDetailFragmentContract {
 
         fun startTrailer(key: String)
 
+        fun showLoadingAnimation()
+
+        fun hideLoadingAnimation()
+
+        fun showDetailGroup()
+
+        fun hideDetailGroup()
+
     }
 
     interface Presenter {

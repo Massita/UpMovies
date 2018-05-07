@@ -28,6 +28,24 @@ fun ImageView.load(imagePath: String?, func: () -> Unit) {
             )
 }
 
+fun ImageView.loadWithCustomPlaceholder(imagePath: String?, placeholder: Int, func: () -> Unit) {
+    Picasso.get()
+            .load(imagePath)
+            .placeholder(placeholder)
+            .into(
+                    this,
+                    object : Callback {
+                        override fun onSuccess() {
+                            func()
+                        }
+
+                        override fun onError(e: Exception?) {
+
+                        }
+                    }
+            )
+}
+
 fun View.setPaletteColor(image: Bitmap) {
     Palette.from(image).generate { palette ->
         val bgColor = palette.getDarkVibrantColor(ContextCompat.getColor(context, android.R.color.black))

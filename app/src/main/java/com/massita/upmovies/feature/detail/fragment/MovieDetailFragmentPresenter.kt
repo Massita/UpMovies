@@ -37,6 +37,9 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
     }
 
     override fun loadDetails() {
+        view?.hideDetailGroup()
+        view?.showLoadingAnimation()
+
         val disposable = movieService
                 .getDetails(movieId, ServiceConfig.API_KEY, Locale.getDefault().getDefaultIsoString())
                 .subscribeOn(Schedulers.io())
@@ -53,6 +56,9 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
         when (response.code()) {
             HttpURLConnection.HTTP_OK -> onMovieDetailOk(response.body())
         }
+
+        view?.hideLoadingAnimation()
+        view?.showDetailGroup()
     }
 
     private fun onLoadVideos(response: Response<Videos>) {
@@ -118,7 +124,8 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
     }
 
     private fun onRequestError(error: Throwable) {
-        // TODO
+        view?.hideLoadingAnimation()
+        view?.showDetailGroup()
     }
 
     override fun onTrailerClicked() {
