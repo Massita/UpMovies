@@ -1,7 +1,8 @@
 package com.massita.upmovies.feature.detail
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
@@ -15,18 +16,11 @@ import android.view.Menu
 import android.view.MenuItem
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
-import com.massita.upmovies.api.service.ServiceConfig
 import com.massita.upmovies.extension.load
 import com.massita.upmovies.feature.detail.fragment.MovieDetailFragment
-import kotlinx.android.synthetic.main.activity_movie_detail.*
-import android.app.AlarmManager
-import android.app.Notification
-import android.os.SystemClock
-import android.app.PendingIntent
 import com.massita.upmovies.feature.detail.notification.NotificationPublisher
-import android.media.RingtoneManager
-import android.support.v4.app.NotificationCompat
 import com.massita.upmovies.helper.NotificationHelper
+import kotlinx.android.synthetic.main.activity_movie_detail.*
 
 
 class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.View {
