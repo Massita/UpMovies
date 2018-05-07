@@ -81,6 +81,10 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
         textMovieGenres.text = genres
     }
 
+    override fun setRating(rate: Float?) {
+        movieRating.rating = rate ?: 0f
+    }
+
     override fun showTrailerButton() {
         buttonTrailer.visibility = View.VISIBLE
     }

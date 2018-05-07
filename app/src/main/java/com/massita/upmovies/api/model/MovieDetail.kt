@@ -14,6 +14,7 @@ data class MovieDetail(
         @SerializedName("release_date") val releaseDate: Date,
         @SerializedName("title") val title: String,
         @SerializedName("video") val video: Boolean,
-        @SerializedName("tagline") val tagline: String
+        @SerializedName("tagline") val tagline: String,
+        @SerializedName("vote_average") val voteAverage: Float
 
 )

@@ -76,6 +76,7 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
         view?.setMovieOriginalTitle(movieDetail?.originalTitle, releaseYear)
         view?.setMovieOverview(movieDetail?.overview)
         view?.setMovieTitle(movieDetail?.title)
+        view?.setRating(movieDetail?.voteAverage)
         view?.setMovieCover(ServiceConfig.IMAGE_BASE_URL + movieDetail?.posterPath)
         view?.setMovieGenres(getGenresAsString())
 

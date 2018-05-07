@@ -18,6 +18,8 @@ interface MovieDetailFragmentContract {
 
         fun setMovieGenres(genres: String)
 
+        fun setRating(rate: Float?)
+
         fun showTrailerButton()
 
         fun startTrailer(key: String)
