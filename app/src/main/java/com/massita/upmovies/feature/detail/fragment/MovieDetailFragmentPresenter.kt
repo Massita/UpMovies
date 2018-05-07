@@ -25,6 +25,7 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
     override fun start() {
         loadDetails()
         view?.setupListeners()
+        view?.setupLoading()
     }
 
     override fun destroy() {

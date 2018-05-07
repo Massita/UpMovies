@@ -6,6 +6,8 @@ interface MovieDetailFragmentContract {
 
         fun setupListeners()
 
+        fun setupLoading()
+
         fun setMovieTitle(title: String?)
 
         fun setMovieOriginalTitle(originalTitle: String?, year: String?)

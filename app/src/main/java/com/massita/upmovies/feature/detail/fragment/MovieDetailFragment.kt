@@ -57,6 +57,10 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
         buttonTrailer.setOnClickListener { presenter.onTrailerClicked() }
     }
 
+    override fun setupLoading() {
+        loadingAnimationView.useHardwareAcceleration(true)
+    }
+
     override fun setMovieTitle(title: String?) {
         textMovieTitle.text = title
     }
@@ -95,7 +99,6 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
 
     override fun showLoadingAnimation() {
         loadingAnimationView.visibility = View.VISIBLE
-        loadingAnimationView.useHardwareAcceleration(true)
         loadingAnimationView.playAnimation()
     }
 
