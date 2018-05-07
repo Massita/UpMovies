@@ -16,6 +16,8 @@ interface MovieDetailActivityContract {
 
         fun start()
 
+        fun destroy()
+
         fun applyPalette() : () -> Unit
     }
 

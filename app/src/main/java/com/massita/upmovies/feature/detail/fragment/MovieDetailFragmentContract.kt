@@ -26,6 +26,8 @@ interface MovieDetailFragmentContract {
 
         fun start()
 
+        fun destroy()
+
         fun onPosterLoaded() : () -> Unit
 
         fun loadDetails()

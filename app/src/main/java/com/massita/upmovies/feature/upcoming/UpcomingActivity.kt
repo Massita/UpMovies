@@ -21,6 +21,11 @@ class UpcomingActivity : AppCompatActivity(), UpcomingActivityContract.View {
         presenter.start()
     }
 
+    override fun onDestroy() {
+        presenter.destroy()
+        super.onDestroy()
+    }
+
     override fun showMovieListFragment() {
         val fragment = MovieListFragment.newInstance()
         showFragment(fragment, UpcomingActivityPresenter.Tag.MOVIE_LIST_FRAGMENT)

@@ -43,6 +43,11 @@ class MovieListFragment : Fragment(), MovieListFragmentContract.View {
         presenter.nextPage()
     }
 
+    override fun onDestroyView() {
+        presenter.destroy()
+        super.onDestroyView()
+    }
+
     override fun setupRecyclerView() {
         val linearLayout = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         recyclerViewMovieList.layoutManager = linearLayout

@@ -10,4 +10,8 @@ class UpcomingActivityPresenter(private var view: UpcomingActivityContract.View?
         view?.showMovieListFragment()
     }
 
+    override fun destroy() {
+        view = null
+    }
+
 }

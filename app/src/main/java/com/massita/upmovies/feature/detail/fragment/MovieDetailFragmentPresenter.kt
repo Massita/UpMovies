@@ -27,6 +27,11 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
         view?.setupListeners()
     }
 
+    override fun destroy() {
+        compositeDisposable.dispose()
+        view = null
+    }
+
     override fun onPosterLoaded(): () -> Unit = {
 
     }

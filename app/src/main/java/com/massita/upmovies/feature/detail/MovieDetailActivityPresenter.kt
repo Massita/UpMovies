@@ -7,6 +7,10 @@ class MovieDetailActivityPresenter(var view: MovieDetailActivityContract.View?) 
         view?.showDetailFragment()
     }
 
+    override fun destroy() {
+        view = null
+    }
+
     override fun applyPalette() : () -> Unit = {
         view?.setupCollapsingToolbarColors()
     }

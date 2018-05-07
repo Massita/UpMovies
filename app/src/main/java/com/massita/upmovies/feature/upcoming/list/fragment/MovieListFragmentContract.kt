@@ -32,6 +32,8 @@ interface MovieListFragmentContract {
 
         fun start()
 
+        fun destroy()
+
         fun nextPage()
 
         fun refreshSearch()

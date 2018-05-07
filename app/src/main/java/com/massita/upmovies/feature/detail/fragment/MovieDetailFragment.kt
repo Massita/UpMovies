@@ -48,6 +48,11 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
         presenter.loadDetails()
     }
 
+    override fun onDestroyView() {
+        presenter.destroy()
+        super.onDestroyView()
+    }
+
     override fun setupListeners() {
         buttonTrailer.setOnClickListener { presenter.onTrailerClicked() }
     }

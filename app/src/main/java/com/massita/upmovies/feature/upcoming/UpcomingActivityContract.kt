@@ -12,6 +12,8 @@ interface UpcomingActivityContract {
 
         fun start()
 
+        fun destroy()
+
     }
 
 }

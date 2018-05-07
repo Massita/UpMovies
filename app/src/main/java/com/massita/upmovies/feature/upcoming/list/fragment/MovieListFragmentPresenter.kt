@@ -26,6 +26,11 @@ class MovieListFragmentPresenter(private var view: MovieListFragmentContract.Vie
         view?.setAdapter(adapter)
     }
 
+    override fun destroy() {
+        compositeDisposable.dispose()
+        view = null
+    }
+
     override fun refreshSearch() {
         val disposable = movieService
                 .getUpcoming(ServiceConfig.API_KEY, Locale.getDefault().getDefaultIsoString(), 1)

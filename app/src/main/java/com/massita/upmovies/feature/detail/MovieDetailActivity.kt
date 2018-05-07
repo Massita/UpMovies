@@ -53,6 +53,11 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
         presenter.start()
     }
 
+    override fun onDestroy() {
+        presenter.destroy()
+        super.onDestroy()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             android.R.id.home -> {
