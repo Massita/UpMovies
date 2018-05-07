@@ -21,5 +21,7 @@
 
         <activity android:name=".feature.detail.MovieDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver android:name=".feature.detail.notification.NotificationPublisher" />
     </application>
 </manifest>

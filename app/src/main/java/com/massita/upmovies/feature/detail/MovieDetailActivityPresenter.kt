@@ -7,7 +7,13 @@ import com.massita.upmovies.extension.isAfterToday
 import com.massita.upmovies.extension.toLocalDateString
 
 class MovieDetailActivityPresenter(var view: MovieDetailActivityContract.View?,
-                                   var movie: Movie?) : MovieDetailActivityContract.Presenter {
+                                   private var movie: Movie?) : MovieDetailActivityContract.Presenter {
+
+    object DateSelector {
+        const val ON_DATE = 0
+        const val DAY_BEFORE = 1
+        const val WEEK_BEFORE = 2
+    }
 
     override fun start() {
         view?.setupCollapsingToolbar()
@@ -53,5 +59,11 @@ class MovieDetailActivityPresenter(var view: MovieDetailActivityContract.View?,
 
         return options
     }
+
+    override fun onRememberDateSelected(selected: Int) {
+        view?.scheduleNotification(10000, movie?.title, movie?.releaseDate?.toLocalDateString())
+    }
+
+    override fun getMovie(): Movie = movie!!
 
 }

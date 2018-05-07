@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">UpMovies</string>
 
+    <!-- notifications -->
+    <string name="notification_channel_default">notification_channel_default</string>
+    <string name="notification_movie_release_title">Coming soon!</string>
+    <string name="notification_movie_release_message">%1$s will be released in %2$s</string>
+
     <!-- Menu -->
     <string name="menu_remember">Remember me</string>
 

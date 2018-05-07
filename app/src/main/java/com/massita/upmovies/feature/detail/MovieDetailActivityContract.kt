@@ -1,5 +1,7 @@
 package com.massita.upmovies.feature.detail
 
+import com.massita.upmovies.api.model.Movie
+
 interface MovieDetailActivityContract {
 
     interface View {
@@ -16,6 +18,8 @@ interface MovieDetailActivityContract {
 
         fun showEmptyRememberDatesMessage()
 
+        fun scheduleNotification(dateTimeInMillis: Int, title: String?, date: String?)
+
     }
 
     interface Presenter {
@@ -27,6 +31,10 @@ interface MovieDetailActivityContract {
         fun applyPalette() : () -> Unit
 
         fun onRememberClick()
+
+        fun onRememberDateSelected(selected: Int)
+
+        fun getMovie() : Movie
 
     }
 

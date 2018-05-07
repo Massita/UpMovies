@@ -19,6 +19,15 @@ import com.massita.upmovies.api.service.ServiceConfig
 import com.massita.upmovies.extension.load
 import com.massita.upmovies.feature.detail.fragment.MovieDetailFragment
 import kotlinx.android.synthetic.main.activity_movie_detail.*
+import android.app.AlarmManager
+import android.app.Notification
+import android.os.SystemClock
+import android.app.PendingIntent
+import com.massita.upmovies.feature.detail.notification.NotificationPublisher
+import android.media.RingtoneManager
+import android.support.v4.app.NotificationCompat
+import com.massita.upmovies.helper.NotificationHelper
+
 
 class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.View {
     object Tag {
@@ -116,12 +125,33 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
     override fun showRememberDialogPicker(options: Array<CharSequence>) {
         AlertDialog.Builder(this)
                 .setTitle(R.string.dialog_select_remember_date_title)
-                .setItems(options, ({ dialog, selected -> Unit }))
+                .setItems(options, ({ dialog, selected -> presenter.onRememberDateSelected(selected) }))
                 .show()
     }
 
     override fun showEmptyRememberDatesMessage() {
         Snackbar.make(coordinatorLayout, R.string.movie_already_released, Snackbar.LENGTH_LONG)
                 .show()
+    }
+
+    override fun scheduleNotification(dateTimeInMillis: Int, title: String?, date: String?) {
+        val builder = NotificationHelper(this).getNotification(
+                getString(R.string.notification_movie_release_title),
+                getString(R.string.notification_movie_release_message, title, date))
+
+        val intent = MovieDetailActivity.newIntent(this, presenter.getMovie())
+        val activity = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        builder.setContentIntent(activity)
+
+        val notification = builder.build()
+
+        val notificationIntent = Intent(this, NotificationPublisher::class.java)
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1)
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification)
+        val pendingIntent = PendingIntent.getBroadcast(this, 1, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+
+        val futureInMillis = SystemClock.elapsedRealtime() + dateTimeInMillis
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent)
     }
 }
