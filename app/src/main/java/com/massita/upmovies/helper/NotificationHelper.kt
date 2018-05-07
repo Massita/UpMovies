@@ -32,6 +32,7 @@ class NotificationHelper(context: Context) : ContextWrapper(context) {
                 .setStyle(NotificationCompat.BigTextStyle().bigText(body))
                 .setContentText(body)
                 .setSmallIcon(getSmallIcon())
+                .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setAutoCancel(true)
     }
 

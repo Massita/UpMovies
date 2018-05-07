@@ -67,7 +67,7 @@ class MovieDetailActivityPresenter(var view: MovieDetailActivityContract.View?,
             DateSelector.WEEK_BEFORE -> movie?.releaseDate?.getDaysAgo(7)?.time
             else -> movie?.releaseDate?.time
         }
-        
+
         dateTime?.let {
             view?.scheduleNotification(it, movie?.title, movie?.releaseDate?.toLocalDateString())
         }
