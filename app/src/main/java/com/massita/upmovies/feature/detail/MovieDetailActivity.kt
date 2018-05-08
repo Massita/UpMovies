@@ -145,7 +145,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
         val notificationIntent = Intent(this, NotificationPublisher::class.java)
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, movie.id)
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification)
-        val pendingIntent = PendingIntent.getBroadcast(this, movie.id, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+        val pendingIntent = PendingIntent.getBroadcast(this, movie.id, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         SharedPreferencesHelper(this).addScheduledAlarm(ScheduledAlarm(movie.id, dateTimeInMillis, movie))
 
