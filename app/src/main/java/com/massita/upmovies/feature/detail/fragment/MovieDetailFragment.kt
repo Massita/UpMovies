@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -123,5 +124,10 @@ class MovieDetailFragment : Fragment(), MovieDetailFragmentContract.View {
 
     override fun hideDetailGroup() {
         detailsGroup.visibility = View.GONE
+    }
+
+    override fun showErrorMessage() {
+        Snackbar.make(view!!, R.string.movie_failed_to_fetch, Snackbar.LENGTH_LONG)
+                .show()
     }
 }

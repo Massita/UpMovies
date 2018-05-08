@@ -130,6 +130,7 @@ class MovieDetailFragmentPresenter(var view: MovieDetailFragmentContract.View?,
     private fun onRequestError(error: Throwable) {
         view?.hideLoadingAnimation()
         view?.showDetailGroup()
+        view?.showErrorMessage()
     }
 
     override fun onTrailerClicked() {

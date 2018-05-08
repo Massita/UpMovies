@@ -34,6 +34,8 @@ interface MovieDetailFragmentContract {
 
         fun hideDetailGroup()
 
+        fun showErrorMessage()
+
     }
 
     interface Presenter {

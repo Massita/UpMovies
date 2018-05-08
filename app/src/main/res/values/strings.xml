@@ -25,4 +25,5 @@
 
     <!-- Movie details -->
     <string name="movie_already_released">Movie already released</string>
+    <string name="movie_failed_to_fetch">Failed to load the movie data</string>
 </resources>
