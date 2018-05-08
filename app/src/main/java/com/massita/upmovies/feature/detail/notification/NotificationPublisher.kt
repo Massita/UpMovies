@@ -16,7 +16,7 @@ class NotificationPublisher : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         val notification : Notification? = intent?.getParcelableExtra(NOTIFICATION)
-        val notificationId = intent?.getIntExtra(NOTIFICATION_ID, 0) ?: 0
+        val notificationId = intent?.getIntExtra(NOTIFICATION_ID, 1) ?: 1
         val notificationHelper = NotificationHelper(context!!)
 
         notificationHelper.notify(notificationId, notification)

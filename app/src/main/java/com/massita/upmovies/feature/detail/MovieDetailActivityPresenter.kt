@@ -69,7 +69,7 @@ class MovieDetailActivityPresenter(var view: MovieDetailActivityContract.View?,
         }
 
         dateTime?.let {
-            view?.scheduleNotification(it, movie?.title, movie?.releaseDate?.toLocalDateString())
+            view?.scheduleNotification(it, movie?.title, movie?.releaseDate?.toLocalDateString(), movie?.id ?: 1)
         }
     }
 
