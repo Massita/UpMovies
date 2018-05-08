@@ -23,5 +23,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver android:name=".feature.detail.notification.NotificationPublisher" />
+        <receiver android:name=".feature.detail.notification.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

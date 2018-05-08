@@ -18,7 +18,7 @@ interface MovieDetailActivityContract {
 
         fun showEmptyRememberDatesMessage()
 
-        fun scheduleNotification(dateTimeInMillis: Long, title: String?, date: String?, id: Int)
+        fun scheduleNotification(dateTimeInMillis: Long, movie: Movie)
 
     }
 
@@ -33,8 +33,6 @@ interface MovieDetailActivityContract {
         fun onRememberClick()
 
         fun onRememberDateSelected(selected: Int)
-
-        fun getMovie() : Movie
 
     }
 

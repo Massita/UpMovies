@@ -17,6 +17,7 @@ import android.view.MenuItem
 import com.massita.upmovies.R
 import com.massita.upmovies.api.model.Movie
 import com.massita.upmovies.extension.load
+import com.massita.upmovies.extension.toLocalDateString
 import com.massita.upmovies.feature.detail.fragment.MovieDetailFragment
 import com.massita.upmovies.feature.detail.notification.NotificationPublisher
 import com.massita.upmovies.feature.detail.notification.ScheduledAlarm
@@ -130,23 +131,23 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailActivityContract.Vie
                 .show()
     }
 
-    override fun scheduleNotification(dateTimeInMillis: Long, title: String?, date: String?, id: Int) {
+    override fun scheduleNotification(dateTimeInMillis: Long, movie: Movie) {
         val builder = NotificationHelper(this).getNotification(
                 getString(R.string.notification_movie_release_title),
-                getString(R.string.notification_movie_release_message, title, date))
+                getString(R.string.notification_movie_release_message, title, movie.releaseDate.toLocalDateString()))
 
-        val intent = MovieDetailActivity.newIntent(this, presenter.getMovie())
-        val activity = PendingIntent.getActivity(this, id, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        val intent = MovieDetailActivity.newIntent(this, movie)
+        val activity = PendingIntent.getActivity(this, movie.id, intent, PendingIntent.FLAG_CANCEL_CURRENT)
         builder.setContentIntent(activity)
 
         val notification = builder.build()
 
         val notificationIntent = Intent(this, NotificationPublisher::class.java)
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, id)
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, movie.id)
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification)
-        val pendingIntent = PendingIntent.getBroadcast(this, id, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+        val pendingIntent = PendingIntent.getBroadcast(this, movie.id, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT)
 
-        SharedPreferencesHelper(this).saveScheduledAlarm(ScheduledAlarm(id, notification))
+        SharedPreferencesHelper(this).addScheduledAlarm(ScheduledAlarm(movie.id, dateTimeInMillis, movie))
 
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.set(AlarmManager.RTC_WAKEUP, dateTimeInMillis, pendingIntent)
