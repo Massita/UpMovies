@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">UpMovies</string>
+
+    <!-- notifications -->
+    <string name="notification_channel_default">notification_channel_default</string>
+    <string name="notification_movie_release_title">Coming soon!</string>
+    <string name="notification_movie_release_message">%1$s will be released in %2$s</string>
+
+    <!-- Menu -->
+    <string name="menu_remember">Remember me</string>
+
+    <!-- Dialog -->
+    <string name="dialog_select_remember_date_title">Set alarm</string>
+
+    <!-- Transitions -->
+    <string name="transition_movie_image">transition_movie_image</string>
+
+    <!-- Movie List texts -->
+    <string name="upcoming_premiere">Upcoming premieres</string>
+    <string name="upcoming_fetch_error">Failed to get movies data</string>
+    <string name="upcoming_fetch_empty">No upcoming premiere found</string>
+
+    <string name="movie_details_trailer">Trailer</string>
+    <string name="movie_details_original_name">%1$s (%2$s)</string>
+
+    <!-- Movie details -->
+    <string name="movie_already_released">Movie already released</string>
+    <string name="movie_failed_to_fetch">Failed to load the movie data</string>
+</resources>
